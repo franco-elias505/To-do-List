@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/css/styles.css">
+    <title>TodoList</title>
+</head>
+<body>
+    <div class="container-bg"></div>
+    <div class="bg-color"></div>
+    <main>  
+        <div class="header">
+            <a href="https://github.com/" target="_blank" class="social-link"><img src="/frontend/img/social/github.svg" alt="GutHub Logo" ></a>
+            <div class="about">
+                About
+            </div>
+            <div class="language-switch">
+                <a href="#">En</a>
+                <span>/</span>
+                <a href="#">中</a>
+            </div>
+        </div>
+            
+        <div class="logo-container">
+            <span class="rombos"></span>
+            <span class="rombos"></span>
+            <img src="/frontend/img/todo.svg" alt="TodoList Logo" class="logo">
+            <div class="pendulums">
+                <div class="pendulum">
+                     <div class="bar"></div>
+                     <div class="motion">
+                        <div class="string"></div>
+                        <div class="weight"></div>
+                      </div>
+                 </div>
+             </div>
+        </div>
+        <div class="task-container">
+            <input type="text" id="task-input" placeholder="Add a to-do item..." class="task-input">
+            <a href="add" class="add-button">Add</a> 
+        </div>
+        <section class="board-tasks">
+        <div class="board-container">
+            <div class="board-tasks-title">
+                <p>Act Now, Simplify Life.☕</p>
+            </div>
+            <div class="empty-tips-board">
+                <ul class="list-tips">
+                    <li>Add Your First To-Do Item! 📝</li>
+                    <li>Usage Tips 💡:</li>
+                    <li>✔️ Press Enter to submit actions.</li>
+                    <li>✔️ Drag to reorder your to-dos (PC only)</li>
+                    <li>✔️ Double-click to edit slogan and tasks.</li>
+                    <li>✔️ Access quick actions in the right sidebar.</li>
+                    <li>🔒 Your data is stored locally in your browser.</li>
+                    <li>📝 Supports data download and import.</li>
+                </ul>
+            </div>
+            <div class="board-count-tasks"></div>
+        </div>
+            <div class="footer-side-bar">
+                <div class="side-shortcut">
+                    <div class="shortcut-switch">
+                        <span class="shortcut-title">OPEN✨</span>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <ul class="lister-filter">
+                        <li><input type="button" value="All" class="btn-small action-showAll selected"></li>
+                    </ul>
+                    <ul class="list-batch"></ul>
+                    <ul class="list-datasave">
+                       <li> <input value="Import(txt/json)" type="button" id="import" class="btn-small action-import"></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
