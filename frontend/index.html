@@ -15,6 +15,24 @@
             <div class="about">
                 About
             </div>
+            <div id="poput-nav" class="poput-nav">
+                <div class="autor">
+                    <img src="../frontend/img/author.jpg" alt="Author Avatar" class="autor-image">
+                    <p>RicoCC</p>
+                </div>
+                <div class="autor-info">
+                    <p>A simple one who loves design and code.</p>
+                </div>
+                <nav class="social-links">
+                        <a href="#" class="social-link"><img src="/frontend/img/social/x.svg" alt="X Logo" ></a>
+                        <a href="#" class="social-link"><img src="/frontend/img/social/github.svg" alt="GitHub Logo" ></a>
+                        <a href="#" class="social-link"><img src="/frontend/img/social/mail.svg" alt="Mail Logo" ></a>
+                        <a href="#" class="social-link"><img src="/frontend/img/social/xiaohongshu.svg" alt="Xiaohongshu Logo" ></a>
+                        <a href="#" class="social-link"><img src="/frontend/img/social/dribbble.svg" alt="Dribbble Logo" ></a>
+                 </nav>
+                
+                <a href="https://ricoui.com/?ref=todo" target="_blank" class="inspiration">🔖Rico's Blog↗ </a>
+            </div>
             <div class="language-switch">
                 <a href="#">En</a>
                 <span>/</span>
@@ -40,11 +58,17 @@
             <input type="text" id="task-input" placeholder="Add a to-do item..." class="task-input">
             <a href="add" class="add-button">Add</a> 
         </div>
+        <div class="tip-container"><p id="message-empty" class="message-empty">💡Please enter content!</p></div>
         <section class="board-tasks">
         <div class="board-container">
+            <div class="board-headers">
+            <div class="mark-all">
+                <p>Mark All Done</p>
+            </div>
             <div class="board-tasks-title">
                 <p>Act Now, Simplify Life.☕</p>
             </div>
+        </div>
             <div class="empty-tips-board">
                 <ul class="list-tips">
                     <li>Add Your First To-Do Item! 📝</li>
@@ -66,14 +90,20 @@
                     </div>
                 </div>
                 <div class="footer-box">
-                    <ul class="lister-filter">
-                        <li><input type="button" value="All" class="btn-small action-showAll selected"></li>
-                    </ul>
-                    <ul class="list-batch"></ul>
-                    <ul class="list-datasave">
-                       <li> <input value="Import(txt/json)" type="button" id="import" class="btn-small action-import"></li>
-                    </ul>
-                </div>
+        <ul class="lister-filter">
+            <li><input type="button" value="All" ></li>
+        </ul>
+        <ul class="list-batch hidden">
+            <li ><input type="button" value="Finish all" ></li>
+            <li><input type="button" value="Clear All" ></li>
+        </ul>
+        <ul class="list-datasave hidden">
+            <li><input type="button" value="Export data" id="download" ></li>
+        </ul>
+        <ul class="list-import"> 
+        <li><input value="Import(txt/json)" type="button" id="import"></li>
+    </ul>
+    </div>
 
             </div>
         </section>
