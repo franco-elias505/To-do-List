@@ -56,7 +56,7 @@
         </div>
         <div class="task-container">
             <input type="text" id="task-input" placeholder="Add a to-do item..." class="task-input">
-            <a href="add" class="add-button">Add</a> 
+            <a href="#" class="add-button">Add</a> 
         </div>
         <div class="tip-container"><p id="message-empty" class="message-empty">💡Please enter content!</p></div>
         <section class="board-tasks">
@@ -81,6 +81,7 @@
                     <li>📝 Supports data download and import.</li>
                 </ul>
             </div>
+            <ul class="list-tasks"></ul>
             <div class="board-count-tasks"></div>
         </div>
             <div class="footer-side-bar">
@@ -91,14 +92,15 @@
                 </div>
                 <div class="footer-box">
         <ul class="lister-filter">
-            <li><input type="button" value="All" ></li>
+            <li><input type="button" value="All"class="filter-btn active-filter" data-filter="all"></li>
         </ul>
         <ul class="list-batch hidden">
-            <li ><input type="button" value="Finish all" ></li>
-            <li><input type="button" value="Clear All" ></li>
+            <li ><input type="button" value="Finish all" class="finish-all"></li>
+            <li><input type="button" value="Clear All" class="clear-all" ></li>
         </ul>
         <ul class="list-datasave hidden">
-            <li><input type="button" value="Export data" id="download" ></li>
+            <li><input type="button" value="Actived"class="filter-btn" data-filter="active" id="active-task" ></li>
+            <li><input type="button" value="Completed" class="filter-btn" data-filter="completed" id="Completed-task"></li>
         </ul>
         <ul class="list-import"> 
         <li><input value="Import(txt/json)" type="button" id="import"></li>
@@ -107,6 +109,18 @@
 
             </div>
         </section>
-    </main>
+    <div class="alert overlay">
+        <div class="alert-mark-all">
+            <h2>Please Confirm</h2>
+            <p>Confirm to mark all as completed?</p>
+            <div class="alert-buttons">
+                <button id="confirm-mark-all" >Cancel</button>
+                <button id="cancel-mark-all">Ok</button>
+             </div>
+        </div>
+    </div>
+    </div>
+    <script src="js/app.js"></script>
+</main>
 </body>
 </html>

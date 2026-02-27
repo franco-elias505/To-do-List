@@ -44,9 +44,79 @@ const deleteTask = async (req, res) => {
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Tarea no encontrada' });
         }
-        res.json({ message: '🗑️ Tarea eliminada', todo: result.rows[0] });
+        res.json({ message: ' Tarea eliminada', todo: result.rows[0] });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
-module.exports={getAll, create, update, deleteTask};
+const patch = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, completed, order_index, notes, dueDate, priority } = req.body;
+
+        const result = await pool.query(
+            `UPDATE todos SET
+                title        = COALESCE($1, title),
+                completed    = COALESCE($2, completed),
+                order_index  = COALESCE($3, order_index),
+                notes        = COALESCE($4, notes),
+                due_date     = COALESCE($5, due_date),
+                priority     = COALESCE($6, priority)
+             WHERE id=$7
+             RETURNING *`,
+            [title, completed, order_index, notes, dueDate, priority, id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Tarea no encontrada' });
+        }
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+const getById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await pool.query(
+            'SELECT * FROM todos WHERE id=$1', [id]
+        );
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Tarea no encontrada' });
+        }
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+const deleteCompleted = async (req, res) => {
+    try {
+        const result = await pool.query(
+            'DELETE FROM todos WHERE completed=1 RETURNING *'
+        );
+        res.json({ 
+            message: ` ${result.rowCount} tareas completadas eliminadas`,
+            todos: result.rows
+        });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+const completeAll = async (req, res) => {
+    try {
+        await pool.query('UPDATE todos SET completed = 1');
+        res.json({ message: 'All tasks completed' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+const deleteAll = async (req, res) => {
+    try {
+        await pool.query('DELETE FROM todos');
+        res.json({ message: 'All todos deleted' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+module.exports={getAll, create, update, deleteTask, patch, getById, deleteCompleted, completeAll, deleteAll};
